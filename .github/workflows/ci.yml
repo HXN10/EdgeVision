@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Verify Code Formatting & Linting
-        run: npx next lint --dir src
+        run: npx next lint src
 
       - name: Verify Strict TypeScript Compilation
         run: npx tsc --noEmit
@@ -36,7 +36,6 @@ jobs:
       - name: Validate Next.js Production Build
         run: npm run build
         env:
-          # Crucial for EdgeVision: ensure cross-origin isolation headers are active during build if needed
           NEXT_TELEMETRY_DISABLED: 1
 
       - name: Install Playwright Browsers
@@ -44,6 +43,5 @@ jobs:
 
       - name: Run E2E Tests
         run: npm run test
-        if: always()
         env:
           NEXT_TELEMETRY_DISABLED: 1
