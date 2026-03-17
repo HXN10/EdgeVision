@@ -55,3 +55,17 @@ npm run dev
 ```
 
 Open `http://localhost:3000` to see the app running locally.
+
+## Testing
+
+EdgeVision uses [Playwright](https://playwright.dev/) for automated End-to-End (E2E) testing to ensure UI stability across Chromium and WebKit.
+
+To run the test suite locally:
+
+```bash
+# Install the required Playwright browsers (first time only)
+npx playwright install --with-deps
+
+# Run the UI tests
+npm run test:e2e
+```
