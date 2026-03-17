@@ -29,8 +29,8 @@ test.describe('EdgeVision Core Navigation', () => {
     await page.goto('/remove-background');
 
     // Ensure the dropzone is loaded and ready
-    await expect(page.getByText(/Drag & drop an image here/)).toBeVisible();
-    await expect(page.getByText(/Supports JPG, PNG, WEBP/)).toBeVisible();
+    await expect(page.getByText(/Drop an image here/)).toBeVisible();
+    await expect(page.getByText(/PNG or JPG/)).toBeVisible();
   });
 
 });
