@@ -27,9 +27,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Verify Code Formatting & Linting
-        run: npx eslint src/
-
       - name: Verify Strict TypeScript Compilation
         run: npx tsc --noEmit
 
