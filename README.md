@@ -67,5 +67,5 @@ To run the test suite locally:
 npx playwright install --with-deps
 
 # Run the UI tests
-npm run test:e2e
+npm run test
 ```
