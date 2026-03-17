@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Verify Code Formatting & Linting
-        run: npm run lint
+        run: npx next lint --dir src
 
       - name: Verify Strict TypeScript Compilation
         run: npx tsc --noEmit
