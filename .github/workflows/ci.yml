@@ -38,3 +38,12 @@ jobs:
         env:
           # Crucial for EdgeVision: ensure cross-origin isolation headers are active during build if needed
           NEXT_TELEMETRY_DISABLED: 1
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run E2E Tests
+        run: npm run test:e2e
+        if: always()
+        env:
+          NEXT_TELEMETRY_DISABLED: 1

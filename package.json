@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "playwright test"
   },
   "dependencies": {
     "@imgly/background-removal": "^1.7.0",
@@ -30,6 +31,7 @@
     "eslint-config-next": "^16.1.6",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "@playwright/test": "^1.42.1"
   }
 }
