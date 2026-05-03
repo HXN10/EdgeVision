@@ -45,6 +45,10 @@ The AI models are about ~40MB. Downloading them on every single page load would 
 The AI model for background removal is heavy. If I waited for a user to upload an image to start downloading the model, the app would feel broken.
 **The fix:** The model begins silently preloading in a Web Worker the second you land on the home page. By the time you actually navigate to the "Remove Background" tool and drop an image, the model is already "warm" in memory, making the inference feel instant.
 
+## Live Demo
+
+**[Try EdgeVision Live Here](https://edgevision-gamma.vercel.app)**
+
 ## Running Locally
 
 Clone the repo, install dependencies, and run the development server:
