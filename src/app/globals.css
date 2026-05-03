@@ -2,17 +2,17 @@
 
 @theme {
   /* — Color Tokens — */
-  --color-ev-black: #0a0a0a;
-  --color-ev-dark: #111111;
-  --color-ev-surface: #1a1a1a;
-  --color-ev-surface-elevated: #222222;
-  --color-ev-border: #2a2a2a;
+  --color-ev-black: #07070b;
+  --color-ev-dark: #111018;
+  --color-ev-surface: #181722;
+  --color-ev-surface-elevated: #242131;
+  --color-ev-border: #342f45;
   --color-ev-text: rgba(255, 255, 255, 0.85);
   --color-ev-text-muted: rgba(255, 255, 255, 0.5);
   --color-ev-text-bright: #f0f0f0;
-  --color-ev-accent: #06b6d4;
-  --color-ev-accent-muted: rgba(6, 182, 212, 0.15);
-  --color-ev-accent-glow: rgba(6, 182, 212, 0.3);
+  --color-ev-accent: #7dd3fc;
+  --color-ev-accent-muted: rgba(125, 211, 252, 0.16);
+  --color-ev-accent-glow: rgba(125, 211, 252, 0.34);
   --color-ev-danger: #ef4444;
 
   /* — Font Families — */
@@ -30,7 +30,11 @@
 
 /* — Base Styles — */
 html {
-  background-color: var(--color-ev-black);
+  background:
+    radial-gradient(circle at 8% 8%, rgba(167, 139, 250, 0.24), transparent 28rem),
+    radial-gradient(circle at 92% 18%, rgba(34, 211, 238, 0.18), transparent 24rem),
+    radial-gradient(circle at 50% 105%, rgba(244, 114, 182, 0.12), transparent 26rem),
+    var(--color-ev-black);
   color: var(--color-ev-text);
   font-family: var(--font-dm-sans);
   -webkit-font-smoothing: antialiased;
@@ -39,7 +43,11 @@ html {
 
 body {
   min-height: 100dvh;
-  background-color: var(--color-ev-black);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 14px),
+    radial-gradient(circle at 10% 12%, rgba(125, 211, 252, 0.13), transparent 18rem),
+    radial-gradient(circle at 84% 8%, rgba(244, 114, 182, 0.14), transparent 22rem),
+    linear-gradient(180deg, rgba(7, 7, 11, 0.88), var(--color-ev-black) 42rem);
 }
 
 /* — Subtle grain overlay — */
@@ -49,23 +57,36 @@ body::before {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.025;
+  opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at 50% 0%, black, transparent 72%);
+}
+
 /* — Selection — */
 ::selection {
-  background-color: rgba(6, 182, 212, 0.25);
+  background-color: rgba(125, 211, 252, 0.28);
   color: #f0f0f0;
 }
 
 /* — Glassmorphism utility — */
 .glass-panel {
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: linear-gradient(135deg, rgba(36, 33, 49, 0.74), rgba(15, 14, 22, 0.62));
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid var(--color-ev-border);
 }
 
@@ -73,13 +94,13 @@ body::before {
 .glow-accent {
   box-shadow:
     0 0 20px rgba(6, 182, 212, 0.15),
-    0 0 60px rgba(6, 182, 212, 0.05);
+    0 0 60px rgba(244, 114, 182, 0.08);
 }
 
 .glow-accent-strong {
   box-shadow:
     0 0 20px rgba(6, 182, 212, 0.25),
-    0 0 80px rgba(6, 182, 212, 0.1);
+    0 0 80px rgba(167, 139, 250, 0.14);
 }
 
 /* — Scrollbar — */
@@ -121,7 +142,10 @@ html.light {
   color: #1a1a1a;
 }
 html.light body {
-  background-color: #f8f9fa !important;
+  background:
+    radial-gradient(circle at 10% 8%, rgba(8, 145, 178, 0.16), transparent 20rem),
+    radial-gradient(circle at 88% 16%, rgba(217, 70, 239, 0.1), transparent 22rem),
+    #f8f9fa !important;
 }
 html.light body::before {
   opacity: 0.015;

@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-globals */
-
 import { removeBackground, type Config } from "@imgly/background-removal";
 
 export interface WorkerMessage {
@@ -97,4 +95,3 @@ self.onmessage = async (event: MessageEvent<WorkerMessage>) => {
     self.postMessage(response);
   }
 };
-

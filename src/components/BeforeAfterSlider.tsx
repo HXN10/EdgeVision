@@ -121,26 +121,18 @@ export function BeforeAfterSlider({
           />
         )}
 
-        {/* Before image (original — clipped) */}
-        <div
-          className="absolute inset-0 overflow-hidden"
-          style={{ width: `${sliderPosition}%` }}
-        >
-          <img
-            src={beforeSrc}
-            alt={beforeAlt}
-            className="block h-full"
-            style={{
-              width: containerRef.current
-                ? `${containerRef.current.offsetWidth}px`
-                : "100%",
-              maxWidth: "none",
-              maxHeight: "400px",
-              objectFit: "contain",
-            }}
-            draggable={false}
-          />
-        </div>
+        {/* Before image (original, clipped over the processed image) */}
+        <img
+          src={beforeSrc}
+          alt={beforeAlt}
+          className="absolute inset-0 block h-auto w-full"
+          style={{
+            clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+            maxHeight: "400px",
+            objectFit: "contain",
+          }}
+          draggable={false}
+        />
 
         {/* Slider line */}
         <div

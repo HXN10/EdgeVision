@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { RotateCcw, X } from "lucide-react";
 import { useBackgroundRemoval } from "@/hooks/useBackgroundRemoval";
@@ -26,11 +26,7 @@ export default function RemoveBackgroundPage() {
     cancel,
   } = useBackgroundRemoval();
 
-  const [compatReport, setCompatReport] = useState<BrowserCompatReport | null>(null);
-
-  useEffect(() => {
-    setCompatReport(detectBrowserCompat());
-  }, []);
+  const [compatReport] = useState<BrowserCompatReport>(() => detectBrowserCompat());
 
   const handleFileAccepted = useCallback(
     (file: File) => {

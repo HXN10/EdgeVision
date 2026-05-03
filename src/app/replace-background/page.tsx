@@ -29,15 +29,11 @@ export default function ReplaceBackgroundPage() {
     cancel,
   } = useBackgroundRemoval();
 
-  const [compatReport, setCompatReport] = useState<BrowserCompatReport | null>(null);
+  const [compatReport] = useState<BrowserCompatReport>(() => detectBrowserCompat());
   const [bgColor, setBgColor] = useState("#FFFFFF");
   const [bgImage, setBgImage] = useState<string | null>(null);
   const [compositeUrl, setCompositeUrl] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    setCompatReport(detectBrowserCompat());
-  }, []);
 
   const handleFileAccepted = useCallback(
     (file: File) => {

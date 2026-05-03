@@ -9,6 +9,10 @@ interface ToolCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
+  eyebrow: string;
+  gradient: string;
+  accent: string;
+  index: number;
   className?: string;
 }
 
@@ -17,12 +21,16 @@ export function ToolCard({
   icon: Icon,
   title,
   description,
+  eyebrow,
+  gradient,
+  accent,
+  index,
   className,
 }: ToolCardProps) {
   return (
-    <li className={`min-h-[14rem] list-none ${className ?? ""}`}>
-      <Link href={href} className="block h-full">
-        <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-ev-border p-2 md:rounded-[1.5rem] md:p-3">
+    <li className={`group min-h-[15rem] list-none ${className ?? ""}`}>
+      <Link href={href} className="block h-full focus-visible:rounded-[1.75rem]">
+        <div className="relative h-full rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-2 shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition-transform duration-300 ease-premium group-hover:-translate-y-1 md:p-3">
           <GlowingEffect
             spread={40}
             glow={true}
@@ -31,19 +39,33 @@ export function ToolCard({
             inactiveZone={0.01}
             borderWidth={3}
           />
-          <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] border-ev-border bg-ev-surface/60 p-6 shadow-sm md:p-6">
-            <div className="relative flex flex-1 flex-col justify-between gap-3">
-              <div className="w-fit rounded-lg border-[0.75px] border-ev-border bg-ev-surface-elevated p-2">
-                <Icon className="h-4 w-4 text-ev-accent" strokeWidth={1.5} />
+          <div className="relative flex h-full flex-col justify-between gap-8 overflow-hidden rounded-[1.25rem] border border-white/10 bg-ev-surface/72 p-6 shadow-sm backdrop-blur md:p-6">
+            <div
+              className={`absolute -right-12 -top-16 h-40 w-40 rounded-full bg-gradient-to-br ${gradient} opacity-35 blur-2xl transition-opacity duration-300 group-hover:opacity-60`}
+            />
+            <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+            <div className="relative flex items-start justify-between gap-4">
+              <div className={`w-fit rounded-2xl border border-white/10 bg-gradient-to-br ${gradient} p-2.5 shadow-[0_12px_30px_rgba(0,0,0,0.28)]`}>
+                <Icon className="h-4 w-4 text-white" strokeWidth={1.7} />
               </div>
-              <div className="space-y-3">
-                <h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sora tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-ev-text-bright">
+              <span className="font-sora text-[10px] font-medium uppercase tracking-[0.28em] text-ev-text-muted/70">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+
+            <div className="relative space-y-4">
+              <div className="space-y-1.5">
+                <p className={`font-sora text-[10px] font-semibold uppercase tracking-[0.24em] ${accent}`}>
+                  {eyebrow}
+                </p>
+                <h3 className="pt-0.5 font-sora text-2xl font-semibold leading-[1.85rem] tracking-[-0.055em] text-ev-text-bright md:text-[1.7rem] md:leading-[2rem]">
                   {title}
                 </h3>
-                <p className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-ev-text-muted">
-                  {description}
-                </p>
               </div>
+              <p className="max-w-[28ch] text-sm leading-6 text-ev-text-muted md:text-[0.95rem]">
+                {description}
+              </p>
             </div>
           </div>
         </div>

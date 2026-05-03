@@ -1,19 +1,13 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(true);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("ev-theme");
-    if (stored === "light") {
-      setDark(false);
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-    }
-  }, []);
+  const [dark, setDark] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return localStorage.getItem("ev-theme") !== "light";
+  });
 
   const toggle = useCallback(() => {
     setDark((prev) => {
