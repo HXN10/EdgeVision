@@ -1,4 +1,4 @@
-const CACHE_NAME = "edgevision-v1";
+const CACHE_NAME = "edgevision-v2";
 const PRECACHE = ["/", "/manifest.json"];
 
 self.addEventListener("install", (event) => {
